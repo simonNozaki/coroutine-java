@@ -21,6 +21,24 @@ public class PrintHelper {
                 " ";
     }
 
+    /**
+     * 標準出力用メッセージ情報を、実行情報と連結して返します。
+     * @param message ログメッセージ
+     * @return 実行情報
+     */
+    public static String concatExecutedStrings(String message){
+        // メッセージがない場合はランタイム情報のみ表示
+        if (message == null || message.isEmpty()) return concatExecutedStrings();
+
+        return
+                LocalDateTime.now() +
+                        "["+Thread.currentThread().getName()+"]"
+                        +new Throwable().getStackTrace()[1].getClassName()+"#"+new Throwable().getStackTrace()[1].getMethodName()+
+                        " " +
+                        message;
+    }
+
+
     public static String logStart() {
         return ">>> start <<<";
     }

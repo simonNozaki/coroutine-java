@@ -31,7 +31,7 @@ public class NetworkService implements Runnable {
         System.out.println(PrintHelper.concatExecutedStrings() + "スレッドプールを開始します。");
 
         try {
-            executorService.submit(new ApplicationController((serverSocket.accept())));
+            executorService.submit(new WebSocketController((serverSocket.accept())));
         } catch (Exception e) {
             System.out.println(PrintHelper.concatExecutedStrings() + "スレッドの処理中に例外が発生しました。");
             executorService.shutdown();

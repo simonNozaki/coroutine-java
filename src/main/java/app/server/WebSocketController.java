@@ -6,7 +6,7 @@ import java.net.Socket;
 /**
  * ソケットに対応するコントローラクラス
  */
-public class ApplicationController implements Runnable {
+public class WebSocketController implements Runnable {
 
     private final Socket socket;
 
@@ -14,7 +14,7 @@ public class ApplicationController implements Runnable {
      * デフォルトコンストラクタ
      * @param socket ソケット
      */
-    ApplicationController(Socket socket) { this.socket = socket; }
+    WebSocketController(Socket socket) { this.socket = socket; }
 
     @Override
     public void run() {

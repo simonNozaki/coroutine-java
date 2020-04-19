@@ -29,7 +29,8 @@ public class HttpRequest {
 
     /**
      * デフォルトコンストラクタ
-     * @param inputStream
+     * @param inputStream 任意の読み込みデータストリーム
+     * @param outputStream 任意の書き出しデータストリーム
      * @throws IOException
      */
     public HttpRequest(InputStream inputStream, OutputStream outputStream) throws IOException {
@@ -99,10 +100,17 @@ public class HttpRequest {
      * @throws IOException
      */
     public void writeHtmml() throws IOException {
-        System.out.println(PrintHelper.concatExecutedStrings() + "HTTPレスポンスを返却します。");
+        System.out.println(PrintHelper.concatExecutedStrings("HTTPレスポンスを返却します。"));
         bufferedWriter.write("HTTP/1.1 200 OK\n");
         bufferedWriter.write("Content-Type: text/html\n");
         bufferedWriter.write("\n");
-        bufferedWriter.write("<h1>Hello World!!</h1>");
+        bufferedWriter.write(defineTopHtml());
+    }
+
+    private String defineTopHtml() {
+        return "<div>" +
+                "<h1> Servlet Container </h1>" +
+                "<p> サーブレットが書き出したHTMLです </p>" +
+                "</div>";
     }
 }

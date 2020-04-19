@@ -3,3 +3,6 @@ out/
 *.iml
 .idea/
 .DS_store
+WebContent/
+*.war
+dist/
